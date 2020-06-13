@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const geodata = require('./utility/geoCode.js')
 const forcast = require('./utility/Forcast.js')
 const app = express()
+const port = process.env.PORT || 3000
 
 const pathValue = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../template/views')
@@ -51,9 +52,8 @@ app.get('/weather',(req,res)=>{
         if(error){
             return res.send({error})
           }
-         console.log(latitude+" "+longitude)
+         
           forcast(longitude,latitude,(error, forcastdata)=>{
-              console.log(forcastdata)
               if(error){
                 return res.send({
                     error:'NOT A VALID ADDRESS'
@@ -75,4 +75,4 @@ app.get('*',(req,res)=>{
     })
 })
 
-app.listen(8080)
+app.listen(port)
