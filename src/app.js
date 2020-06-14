@@ -76,5 +76,5 @@ app.get('*',(req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log("starting the server")
+    console.log("starting the server" +port)
 })
